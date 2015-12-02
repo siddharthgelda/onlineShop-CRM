@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+  <class name="com.CustAddress" table="CustAddress">
+    <meta attribute="class-description">
+			This class contains the employee detail. 
+      </meta>
+    <id column="Cust_Address_id" name="Cust_Address_id" type="int">
+      <generator class="native">
+      </generator>
+    </id>
+    <property column="Add_line1" name="Add_line1" type="string"/>
+    <property column="Add_line2" name="Add_line2" type="string"/>
+     <property column="pin_code" name="pin_code" type="string"/>
+      <set cascade="save-update" name="orders">
+      <key column="Cust_Address_id"/>
+      <one-to-one class="com.Orders"/>
+    </set>
+        <set cascade="save-update" name="state">
+      <key column="Cust_Address_id"/>
+      <one-to-one class="com.States"/>
+    </set>
+      <set cascade="save-update" name="country">
+      <key column="Cust_Address_id"/>
+      <one-to-one class="com.Country"/>
+    </set>
+      <set cascade="save-update" name="city">
+      <key column="Cust_Address_id"/>
+      <one-to-one class="com.City"/>
+    </set>
+  </class>
+</hibernate-mapping>

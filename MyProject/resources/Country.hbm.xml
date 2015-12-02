@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+  <class name="com.State" table="state">
+    <meta attribute="class-description">
+         This class contains the bank detail. 
+      </meta>
+    <id column="Country_id" name="Country_id" type="int">
+      <generator class="native"/>
+    </id>
+    <property column="Country_name" name="CountryName" type="string"/>
+    <set cascade="all" name="states">
+      <key column="Country_id"/>
+      <one-to-many class="com.States"/>
+    </set>
+    <set cascade="save-update" name="address">
+      <key column="Country_id"/>
+      <one-to-one class="com.CustAddress" name="address"/>
+    </set>
+  </class>
+</hibernate-mapping>
